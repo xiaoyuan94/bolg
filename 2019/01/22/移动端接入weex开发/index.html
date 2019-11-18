@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="weex,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="weex介绍简述来自官方文档：  Weex 是一个使用 Web 开发体验来开发高性能原生应用的框架。  Weex 致力于使开发者能基于当代先进的 Web 开发技术，使用同一套代码来构建 Android、iOS 和 Web 应用。具体来讲，在集成了 WeexSDK 之后，你可以使用 JavaScript 和现代流行的前端框架来开发移动应用。 Weex 的结构是解耦的，渲染引擎与语法层是分开的，也不依">
+<meta name="keywords" content="weex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端接入weex开发">
+<meta property="og:url" content="https://xxyuan.net/2019/01/22/移动端接入weex开发/index.html">
+<meta property="og:site_name" content="晓远Blog">
+<meta property="og:description" content="weex介绍简述来自官方文档：  Weex 是一个使用 Web 开发体验来开发高性能原生应用的框架。  Weex 致力于使开发者能基于当代先进的 Web 开发技术，使用同一套代码来构建 Android、iOS 和 Web 应用。具体来讲，在集成了 WeexSDK 之后，你可以使用 JavaScript 和现代流行的前端框架来开发移动应用。 Weex 的结构是解耦的，渲染引擎与语法层是分开的，也不依">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://xxyuan.net/2019/01/22/移动端接入weex开发/1548142655580.png">
+<meta property="og:updated_time" content="2019-11-16T14:20:50.423Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端接入weex开发">
+<meta name="twitter:description" content="weex介绍简述来自官方文档：  Weex 是一个使用 Web 开发体验来开发高性能原生应用的框架。  Weex 致力于使开发者能基于当代先进的 Web 开发技术，使用同一套代码来构建 Android、iOS 和 Web 应用。具体来讲，在集成了 WeexSDK 之后，你可以使用 JavaScript 和现代流行的前端框架来开发移动应用。 Weex 的结构是解耦的，渲染引擎与语法层是分开的，也不依">
+<meta name="twitter:image" content="https://xxyuan.net/2019/01/22/移动端接入weex开发/1548142655580.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xxyuan.net/2019/01/22/移动端接入weex开发/">
+
+
+
+
+
+  <title>移动端接入weex开发 | 晓远Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a399ac754305e930ad3022a6f1429c42";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">晓远Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xxyuan.net/2019/01/22/移动端接入weex开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="晓远">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晓远Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">移动端接入weex开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T15:21:20+08:00">
+                2019-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发/" itemprop="url" rel="index">
+                    <span itemprop="name">开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="weex介绍"><a href="#weex介绍" class="headerlink" title="weex介绍"></a>weex介绍</h3><h4 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h4><p>来自官方文档：</p>
+<blockquote>
+<p><strong>Weex 是一个使用 Web 开发体验来开发高性能原生应用的框架。</strong></p>
+</blockquote>
+<p>Weex 致力于使开发者能基于当代先进的 Web 开发技术，使用同一套代码来构建 Android、iOS 和 Web 应用。具体来讲，在集成了 WeexSDK 之后，你可以使用 JavaScript 和现代流行的前端框架来开发移动应用。</p>
+<p>Weex 的结构是解耦的，渲染引擎与语法层是分开的，也不依赖任何特定的前端框架，目前主要支持 <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue.js</a> 和 <a href="https://alibaba.github.io/rax/" target="_blank" rel="noopener">Rax</a> 这两个前端框架。</p>
+<p>Weex 的另一个主要目标是跟进当代先进的 Web 开发和原生开发的技术，使生产力和性能共存。在开发 Weex 页面就像开发普通网页一样；在渲染 Weex 页面时和渲染原生页面一样。</p>
+<a id="more"></a>
+<h3 id="移动Android配置"><a href="#移动Android配置" class="headerlink" title="移动Android配置"></a>移动Android配置</h3><h4 id="gradle文件配置"><a href="#gradle文件配置" class="headerlink" title="gradle文件配置"></a>gradle文件配置</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'com.taobao.android:weex_sdk:0.19.0.7@aar'</span></span><br></pre></td></tr></table></figure>
+<p>其实只是需要一个sdk的接入配置即可了，官方的源码接入方式，实在是用着很难受，配置都需要一大堆时间，实在是太麻烦了。</p>
+<h4 id="activity执行"><a href="#activity执行" class="headerlink" title="activity执行"></a>activity执行</h4><p>API中有两种方式可以接入，一种是本地获取js，一种是远程拉取js文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xxyuan.weexandroid.activity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.content.IntentFilter;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.text.TextUtils;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.LayoutInflater;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.FrameLayout;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.IWXRenderListener;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.WXSDKInstance;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.common.WXRenderStrategy;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.utils.WXFileUtils;</span><br><span class="line"><span class="keyword">import</span> com.xxyuan.weexandroid.R;</span><br><span class="line"><span class="keyword">import</span> com.xxyuan.weexandroid.weex.Constants;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> butterknife.BindView;</span><br><span class="line"><span class="keyword">import</span> butterknife.ButterKnife;</span><br><span class="line"><span class="keyword">import</span> butterknife.Unbinder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">IWXRenderListener</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> WXSDKInstance mWXSDKInstance;</span><br><span class="line">    <span class="meta">@BindView</span>(R.id.container)</span><br><span class="line">    <span class="keyword">protected</span> FrameLayout mContainer;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> View rootView;</span><br><span class="line">    <span class="keyword">protected</span> Unbinder unbinder;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RENDER_TYPE_LOCAL = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RENDER_TYPE_NETWORK = <span class="number">11</span>;</span><br><span class="line">    <span class="keyword">protected</span> String pageName = <span class="string">"weex"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        mContext = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">int</span> layoutId = getLayoutResId();</span><br><span class="line">        <span class="comment">//初始化butterknife</span></span><br><span class="line">        <span class="keyword">if</span> (layoutId &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            rootView = LayoutInflater.from(mContext).inflate(layoutId, <span class="keyword">null</span>);</span><br><span class="line">            setContentView(rootView);</span><br><span class="line">            unbinder = ButterKnife.bind(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        initData();</span><br><span class="line">        initView();</span><br><span class="line"></span><br><span class="line">        startRenderPage();</span><br><span class="line">        registerWeexReceiver();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">registerWeexReceiver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        registerReceiver(receiver, <span class="keyword">new</span> IntentFilter(Constants.BC_ACTION_RENDER_NET_JS));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> BroadcastReceiver receiver = <span class="keyword">new</span> BroadcastReceiver() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">            String action = intent.getAction();</span><br><span class="line">            Log.d(<span class="string">"dq"</span>, <span class="string">"received broadcast"</span> + action);</span><br><span class="line">            <span class="keyword">if</span> (Constants.BC_ACTION_RENDER_NET_JS.equals(action)) &#123;</span><br><span class="line">                String url = intent.getStringExtra(<span class="string">"url"</span>);</span><br><span class="line">                <span class="keyword">if</span> (!TextUtils.isEmpty(url)) &#123;</span><br><span class="line">                    pageName = <span class="string">"newPage"</span> + <span class="keyword">new</span> Random().nextInt() + <span class="number">10</span>;</span><br><span class="line">                    renderNetWeexPage(url);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getLayoutResId</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">startRenderPage</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">renderNetWeexPage</span><span class="params">(String jsUrl)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(jsUrl)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        renderWeexPage(RENDER_TYPE_NETWORK, jsUrl, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">renderLocalWeexPage</span><span class="params">(String jsName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(jsName)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        renderWeexPage(RENDER_TYPE_LOCAL, Constants.LOCAL_FILE_SCHEMA + jsName, jsName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">renderWeexPage</span><span class="params">(<span class="keyword">int</span> renderType, String jsUrl, String jsName)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//if (mWXSDKInstance == null) &#123;</span></span><br><span class="line">            mWXSDKInstance = <span class="keyword">new</span> WXSDKInstance(mContext);</span><br><span class="line">        <span class="comment">//&#125;</span></span><br><span class="line">        mWXSDKInstance.registerRenderListener(<span class="keyword">this</span>);</span><br><span class="line">        Map&lt;String, Object&gt; options = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        options.put(WXSDKInstance.BUNDLE_URL, jsUrl);</span><br><span class="line">        pageName = jsName;</span><br><span class="line">        <span class="keyword">if</span> (renderType == RENDER_TYPE_NETWORK) &#123;</span><br><span class="line">            mWXSDKInstance.renderByUrl(pageName, jsUrl, options, <span class="keyword">null</span>, WXRenderStrategy.APPEND_ONCE);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (renderType == RENDER_TYPE_LOCAL) &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * WXSample 可以替换成自定义的字符串，针对埋点有效。</span></span><br><span class="line"><span class="comment">             * template 是.we transform 后的 js文件。</span></span><br><span class="line"><span class="comment">             * option 可以为空，或者通过option传入 js需要的参数。例如bundle js的地址等。</span></span><br><span class="line"><span class="comment">             * jsonInitData 可以为空。</span></span><br><span class="line"><span class="comment">             * width 为-1 默认全屏，可以自己定制。</span></span><br><span class="line"><span class="comment">             * height =-1 默认全屏，可以自己定制。</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            mWXSDKInstance.render(pageName, WXFileUtils.loadAsset(jsName, mContext), <span class="keyword">null</span>, <span class="keyword">null</span>, WXRenderStrategy.APPEND_ASYNC);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*flag:渲染策略。WXRenderStrategy.APPEND_ASYNC:异步策略先返回外层View，</span></span><br><span class="line"><span class="comment">        其他View渲染完成后调用onRenderSuccess。</span></span><br><span class="line"><span class="comment">        WXRenderStrategy.APPEND_ONCE 所有控件渲染完后后一次性返回。 */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStart();</span><br><span class="line">        <span class="keyword">if</span> (mWXSDKInstance != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mWXSDKInstance.onActivityStart();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onResume();</span><br><span class="line">        <span class="keyword">if</span> (mWXSDKInstance != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mWXSDKInstance.onActivityResume();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onPause();</span><br><span class="line">        <span class="keyword">if</span> (mWXSDKInstance != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mWXSDKInstance.onActivityPause();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStop();</span><br><span class="line">        <span class="keyword">if</span> (mWXSDKInstance != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mWXSDKInstance.onActivityStop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (mWXSDKInstance != <span class="keyword">null</span>) &#123;</span><br><span class="line">                mWXSDKInstance.onActivityDestroy();</span><br><span class="line">                mWXSDKInstance.destroy();</span><br><span class="line">                mWXSDKInstance = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">//容易出错</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (getLayoutResId() &gt; <span class="number">0</span> &amp;&amp; unbinder != <span class="keyword">null</span>) &#123;</span><br><span class="line">            unbinder.unbind();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (receiver != <span class="keyword">null</span>) &#123;</span><br><span class="line">            unregisterReceiver(receiver);</span><br><span class="line">            receiver = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewCreated</span><span class="params">(WXSDKInstance instance, View view)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (view.getParent() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            ((ViewGroup) view.getParent()).removeView(view);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (mContainer != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mContainer.addView(view);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRenderSuccess</span><span class="params">(WXSDKInstance instance, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">        handleRenderSuccess(instance, width, height);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRefreshSuccess</span><span class="params">(WXSDKInstance instance, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onException</span><span class="params">(WXSDKInstance instance, String errCode, String msg)</span> </span>&#123;</span><br><span class="line">        handlerRenderError(instance, errCode, msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">handlerRenderError</span><span class="params">(WXSDKInstance instance, String errCode, String msg)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(mContext, <span class="string">"render error "</span> + errCode, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">handleRenderSuccess</span><span class="params">(WXSDKInstance instance, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>BaseActivity的封装，其他接入的activity只需要执行部分的代码即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xxyuan.weexandroid.activity;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.xxyuan.weexandroid.R;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeexUIActivity</span> <span class="keyword">extends</span> <span class="title">BaseActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">startRenderPage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        renderLocalWeexPage(<span class="string">"weex/home.js"</span>);</span><br><span class="line">        <span class="comment">//renderNetWeexPage("http://192.168.0.68:8081/dist/home.js");</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLayoutResId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> R.layout.activity_weex_ui;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="ImageAdapter实现注意"><a href="#ImageAdapter实现注意" class="headerlink" title="ImageAdapter实现注意"></a>ImageAdapter实现注意</h4><p>因为weex区别于浏览器渲染，所以说它内部的图片加载需要开发人员自主定义图片的加载。</p>
+<p>类似于这样，空白处自己可以自主选用图片渲染框架。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageAdapter</span> <span class="keyword">implements</span> <span class="title">IWXImgLoaderAdapter</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImage</span><span class="params">(String url, ImageView view, WXImageQuality quality, WXImageStrategy strategy)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//实现你自己的图片下载，否则图片无法显示。</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以Picasso为例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xxyuan.weexandroid.weex.adapter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.net.Uri;</span><br><span class="line"><span class="keyword">import</span> android.text.TextUtils;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.squareup.picasso.Callback;</span><br><span class="line"><span class="keyword">import</span> com.squareup.picasso.Picasso;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.WXEnvironment;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.WXSDKManager;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.adapter.IWXImgLoaderAdapter;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.common.WXImageStrategy;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.dom.WXImageQuality;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by lixinke on 16/6/1.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageAdapter</span> <span class="keyword">implements</span> <span class="title">IWXImgLoaderAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImage</span><span class="params">(<span class="keyword">final</span> String url, <span class="keyword">final</span> ImageView view, WXImageQuality quality, <span class="keyword">final</span> WXImageStrategy strategy)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//实现你自己的图片下载。</span></span><br><span class="line">        WXSDKManager.getInstance().postOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (view == <span class="keyword">null</span> || view.getLayoutParams() == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (TextUtils.isEmpty(url)) &#123;</span><br><span class="line">                    view.setImageBitmap(<span class="keyword">null</span>);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                String temp = url;</span><br><span class="line">                <span class="keyword">if</span> (url.startsWith(<span class="string">"//"</span>)) &#123;</span><br><span class="line">                    temp = <span class="string">"http:"</span> + url;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (view.getLayoutParams().width &lt;= <span class="number">0</span> || view.getLayoutParams().height &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (!TextUtils.isEmpty(strategy.placeHolder)) &#123;</span><br><span class="line">                    Picasso.Builder builder = <span class="keyword">new</span> Picasso.Builder(WXEnvironment.getApplication());</span><br><span class="line">                    Picasso picasso = builder.build();</span><br><span class="line">                    picasso.load(Uri.parse(strategy.placeHolder)).into(view);</span><br><span class="line"></span><br><span class="line">                    view.setTag(strategy.placeHolder.hashCode(), picasso);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                Picasso.with(WXEnvironment.getApplication())</span><br><span class="line">                        .load(temp)</span><br><span class="line">                        .transform(<span class="keyword">new</span> BlurTransformation(strategy.blurRadius))</span><br><span class="line">                        .into(view, <span class="keyword">new</span> Callback() &#123;</span><br><span class="line">                            <span class="meta">@Override</span></span><br><span class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                                <span class="keyword">if</span> (strategy.getImageListener() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                                    strategy.getImageListener().onImageFinish(url, view, <span class="keyword">true</span>, <span class="keyword">null</span>);</span><br><span class="line">                                &#125;</span><br><span class="line"></span><br><span class="line">                                <span class="keyword">if</span> (!TextUtils.isEmpty(strategy.placeHolder)) &#123;</span><br><span class="line">                                    ((Picasso) view.getTag(strategy.placeHolder.hashCode())).cancelRequest(view);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                            <span class="meta">@Override</span></span><br><span class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                                <span class="keyword">if</span> (strategy.getImageListener() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                                    strategy.getImageListener().onImageFinish(url, view, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="vue架构的对接"><a href="#vue架构的对接" class="headerlink" title="vue架构的对接"></a>vue架构的对接</h3><h4 id="package配置文件"><a href="#package配置文件" class="headerlink" title="package配置文件"></a>package配置文件</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"weex"</span>,</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"A weex project"</span>,</span><br><span class="line">    <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">    <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">        <span class="attr">"start"</span>: <span class="string">"npm run serve"</span>,</span><br><span class="line">        <span class="attr">"build"</span>: <span class="string">"webpack"</span>,</span><br><span class="line">        <span class="attr">"build_plugin"</span>: <span class="string">"webpack --config ./tools/webpack.config.plugin.js --color"</span>,</span><br><span class="line">        <span class="attr">"dev"</span>: <span class="string">"webpack --config webpack.config.js --watch -d"</span>,</span><br><span class="line">        <span class="attr">"serve"</span>: <span class="string">"webpack-dev-server --config webpack.dev.js --watch --open"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"keywords"</span>: [</span><br><span class="line">        <span class="string">"weex"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"author"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"license"</span>: <span class="string">"MIT"</span>,</span><br><span class="line">    <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">        <span class="attr">"fs-extra"</span>: <span class="string">"^4.0.1"</span>,</span><br><span class="line">        <span class="attr">"vue"</span>: <span class="string">"^2.4.3"</span>,</span><br><span class="line">        <span class="attr">"weex-html5"</span>: <span class="string">"^0.4.1"</span>,</span><br><span class="line">        <span class="attr">"weex-ui"</span>: <span class="string">"^0.4.0"</span>,</span><br><span class="line">        <span class="attr">"weex-vue-render"</span>: <span class="string">"^0.12.21"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">        <span class="attr">"babel-core"</span>: <span class="string">"^6.21.0"</span>,</span><br><span class="line">        <span class="attr">"babel-loader"</span>: <span class="string">"^6.2.4"</span>,</span><br><span class="line">        <span class="attr">"babel-plugin-add-module-exports"</span>: <span class="string">"^0.2.1"</span>,</span><br><span class="line">        <span class="attr">"babel-plugin-component"</span>: <span class="string">"^1.1.0"</span>,</span><br><span class="line">        <span class="attr">"babel-plugin-transform-runtime"</span>: <span class="string">"^6.9.0"</span>,</span><br><span class="line">        <span class="attr">"babel-preset-es2015"</span>: <span class="string">"^6.9.0"</span>,</span><br><span class="line">        <span class="attr">"babel-preset-stage-0"</span>: <span class="string">"^6.24.1"</span>,</span><br><span class="line">        <span class="attr">"babel-runtime"</span>: <span class="string">"^6.9.2"</span>,</span><br><span class="line">        <span class="attr">"css-loader"</span>: <span class="string">"^0.26.1"</span>,</span><br><span class="line">        <span class="attr">"html-webpack-plugin"</span>: <span class="string">"^2.30.1"</span>,</span><br><span class="line">        <span class="attr">"ip"</span>: <span class="string">"^1.1.5"</span>,</span><br><span class="line">        <span class="attr">"raw-loader"</span>: <span class="string">"^0.5.1"</span>,</span><br><span class="line">        <span class="attr">"script-ext-html-webpack-plugin"</span>: <span class="string">"^1.8.5"</span>,</span><br><span class="line">        <span class="attr">"vue-loader"</span>: <span class="string">"^12.2.0"</span>,</span><br><span class="line">        <span class="attr">"vue-template-compiler"</span>: <span class="string">"^2.4.3"</span>,</span><br><span class="line">        <span class="attr">"webpack"</span>: <span class="string">"^2.2.1"</span>,</span><br><span class="line">        <span class="attr">"webpack-dev-server"</span>: <span class="string">"^2.4.2"</span>,</span><br><span class="line">        <span class="attr">"webpack-merge"</span>: <span class="string">"^4.1.0"</span>,</span><br><span class="line">        <span class="attr">"weex-loader"</span>: <span class="string">"^0.5.3"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"optionalDependencies"</span>: &#123;</span><br><span class="line">        <span class="attr">"ios-deploy"</span>: <span class="string">"^1.9.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="vue文件"><a href="#vue文件" class="headerlink" title="vue文件"></a>vue文件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;wxc-button text=<span class="string">"Open Popup"</span></span><br><span class="line">                @wxcButtonClicked=<span class="string">"buttonClicked"</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/wxc-button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;wxc-popup width="500"</span></span><br><span class="line"><span class="regexp">               pos="left"</span></span><br><span class="line"><span class="regexp">               :show="isShow"</span></span><br><span class="line"><span class="regexp">               @wxcPopupOverlayClicked="overlayClicked"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>wxc-popup&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; WxcButton, WxcPopup &#125; <span class="keyword">from</span> <span class="string">"weex-ui"</span>;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  components: &#123; WxcButton, WxcPopup &#125;,</span><br><span class="line">  data: <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</span><br><span class="line">    isShow: <span class="literal">false</span></span><br><span class="line">  &#125;),</span><br><span class="line">  methods: &#123;</span><br><span class="line">    buttonClicked() &#123;</span><br><span class="line">      <span class="keyword">this</span>.isShow = <span class="literal">true</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    overlayClicked() &#123;</span><br><span class="line">      <span class="keyword">this</span>.isShow = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>典型的vue写法</p>
+<h3 id="实现的效果图"><a href="#实现的效果图" class="headerlink" title="实现的效果图"></a>实现的效果图</h3><p><img src="/2019/01/22/移动端接入weex开发/1548142655580.png" alt="1548142655580"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/weex/" rel="tag"># weex</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/18/《我在印度701天》悲凉、厚重、忍俊不禁的国度/" rel="next" title="《我在印度701天》悲凉、厚重、忍俊不禁的国度">
+                <i class="fa fa-chevron-left"></i> 《我在印度701天》悲凉、厚重、忍俊不禁的国度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/19/RePlugin插件化开发/" rel="prev" title="replugin插件化">
+                replugin插件化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">晓远</p>
+              <p class="site-description motion-element" itemprop="description">这个一个关于博客的个人网站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#weex介绍"><span class="nav-number">1.</span> <span class="nav-text">weex介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简述"><span class="nav-number">1.1.</span> <span class="nav-text">简述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动Android配置"><span class="nav-number">2.</span> <span class="nav-text">移动Android配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle文件配置"><span class="nav-number">2.1.</span> <span class="nav-text">gradle文件配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#activity执行"><span class="nav-number">2.2.</span> <span class="nav-text">activity执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ImageAdapter实现注意"><span class="nav-number">2.3.</span> <span class="nav-text">ImageAdapter实现注意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue架构的对接"><span class="nav-number">3.</span> <span class="nav-text">vue架构的对接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#package配置文件"><span class="nav-number">3.1.</span> <span class="nav-text">package配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue文件"><span class="nav-number">3.2.</span> <span class="nav-text">vue文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现的效果图"><span class="nav-number">4.</span> <span class="nav-text">实现的效果图</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">晓远</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

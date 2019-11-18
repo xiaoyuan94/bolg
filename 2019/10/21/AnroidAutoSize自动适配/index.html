@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Andorid自动适配,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介： 众所周知Android的机型多种多样，各种分辨率又琳琅满目，所以造成的问题就是APP在适配的时候就会及其麻烦，一直以来都要对所有的分辨率都要弄一种单独的配置，极度麻烦。 现在针对此问题，头条开源了一个适配方案，原理就是在不同分辨率下，自动修改当前控件的布局，让所有界面的观感都几乎一样。  Githup地址：   https://github.com/JessYanCoding/Androi">
+<meta name="keywords" content="Andorid自动适配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AnroidAutoSize自动适配">
+<meta property="og:url" content="https://xxyuan.net/2019/10/21/AnroidAutoSize自动适配/index.html">
+<meta property="og:site_name" content="晓远Blog">
+<meta property="og:description" content="简介： 众所周知Android的机型多种多样，各种分辨率又琳琅满目，所以造成的问题就是APP在适配的时候就会及其麻烦，一直以来都要对所有的分辨率都要弄一种单独的配置，极度麻烦。 现在针对此问题，头条开源了一个适配方案，原理就是在不同分辨率下，自动修改当前控件的布局，让所有界面的观感都几乎一样。  Githup地址：   https://github.com/JessYanCoding/Androi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://xxyuan.net/2019/10/21/AnroidAutoSize自动适配/自动适配1.png">
+<meta property="og:image" content="https://xxyuan.net/2019/10/21/AnroidAutoSize自动适配/自动适配2.png">
+<meta property="og:image" content="https://xxyuan.net/2019/10/21/AnroidAutoSize自动适配/自动适配3.png">
+<meta property="og:image" content="https://xxyuan.net/2019/10/21/AnroidAutoSize自动适配/自动适配4.png">
+<meta property="og:updated_time" content="2019-11-16T14:20:50.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AnroidAutoSize自动适配">
+<meta name="twitter:description" content="简介： 众所周知Android的机型多种多样，各种分辨率又琳琅满目，所以造成的问题就是APP在适配的时候就会及其麻烦，一直以来都要对所有的分辨率都要弄一种单独的配置，极度麻烦。 现在针对此问题，头条开源了一个适配方案，原理就是在不同分辨率下，自动修改当前控件的布局，让所有界面的观感都几乎一样。  Githup地址：   https://github.com/JessYanCoding/Androi">
+<meta name="twitter:image" content="https://xxyuan.net/2019/10/21/AnroidAutoSize自动适配/自动适配1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xxyuan.net/2019/10/21/AnroidAutoSize自动适配/">
+
+
+
+
+
+  <title>AnroidAutoSize自动适配 | 晓远Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a399ac754305e930ad3022a6f1429c42";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">晓远Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xxyuan.net/2019/10/21/AnroidAutoSize自动适配/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="晓远">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晓远Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AnroidAutoSize自动适配</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-21T10:56:46+08:00">
+                2019-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发/" itemprop="url" rel="index">
+                    <span itemprop="name">开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><blockquote>
+<p>众所周知Android的机型多种多样，各种分辨率又琳琅满目，所以造成的问题就是APP在适配的时候就会及其麻烦，一直以来都要对所有的分辨率都要弄一种单独的配置，极度麻烦。</p>
+<p>现在针对此问题，头条开源了一个适配方案，原理就是在不同分辨率下，自动修改当前控件的布局，让所有界面的观感都几乎一样。</p>
+</blockquote>
+<h3 id="Githup地址："><a href="#Githup地址：" class="headerlink" title="Githup地址："></a>Githup地址：</h3><blockquote>
+<p>  <a href="https://github.com/JessYanCoding/AndroidAutoSize" target="_blank" rel="noopener">https://github.com/JessYanCoding/AndroidAutoSize</a></p>
+</blockquote>
+<a id="more"></a>
+<h3 id="各种分辨率效果"><a href="#各种分辨率效果" class="headerlink" title="各种分辨率效果"></a>各种分辨率效果</h3><h4 id="Pixel-2-XL-1440-x-2880-560dpi"><a href="#Pixel-2-XL-1440-x-2880-560dpi" class="headerlink" title="Pixel 2 XL | 1440 x 2880 | 560dpi:"></a>Pixel 2 XL | 1440 x 2880 | 560dpi:</h4><p><img src="/2019/10/21/AnroidAutoSize自动适配/自动适配1.png" alt="测试图片的使用"></p>
+<h4 id="Pixel-XL-1440-x-2560-560dpi"><a href="#Pixel-XL-1440-x-2560-560dpi" class="headerlink" title="Pixel XL | 1440 x 2560 | 560dpi:"></a>Pixel XL | 1440 x 2560 | 560dpi:</h4><p><img src="/2019/10/21/AnroidAutoSize自动适配/自动适配2.png" alt="测试图片的使用"></p>
+<h4 id="Nexus-5X-1080-x-1920-420dpi"><a href="#Nexus-5X-1080-x-1920-420dpi" class="headerlink" title="Nexus 5X | 1080 x 1920 | 420dpi:"></a>Nexus 5X | 1080 x 1920 | 420dpi:</h4><p><img src="/2019/10/21/AnroidAutoSize自动适配/自动适配3.png" alt="测试图片的使用"></p>
+<h4 id="Nexus-4-768-x-1280-320dpi"><a href="#Nexus-4-768-x-1280-320dpi" class="headerlink" title="Nexus 4 | 768 x 1280 | 320dpi:"></a>Nexus 4 | 768 x 1280 | 320dpi:</h4><p><img src="/2019/10/21/AnroidAutoSize自动适配/自动适配4.png" alt="测试图片的使用"></p>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式:"></a>使用方式:</h3><h4 id="关联"><a href="#关联" class="headerlink" title="关联:"></a>关联:</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'me.jessyan:autosize:1.1.2'</span></span><br></pre></td></tr></table></figure>
+<h4 id="配置文件中配置："><a href="#配置文件中配置：" class="headerlink" title="配置文件中配置："></a>配置文件中配置：</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span>&gt;</span>            </span><br><span class="line">        <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">"design_width_in_dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:value</span>=<span class="string">"360"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">"design_height_in_dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:value</span>=<span class="string">"640"</span>/&gt;</span>           </span><br><span class="line">     <span class="tag">&lt;/<span class="name">application</span>&gt;</span>           </span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>就这么简单，以上就讲所有的过程弄完了，就可以实现自动适配了，几乎所有的分辨率的大致都是ok的，极度为微小的需要细微调整即可</p>
+</blockquote>
+<h3 id="常见问题："><a href="#常见问题：" class="headerlink" title="常见问题："></a>常见问题：</h3><h4 id="不同界面要求的切图不同"><a href="#不同界面要求的切图不同" class="headerlink" title="不同界面要求的切图不同"></a>不同界面要求的切图不同</h4><blockquote>
+<p>有的项目会出现不同界面需要的界面分辨率是不统一的，这个时候就需要自定义来使用，修改特定界面的适配方案</p>
+</blockquote>
+<h5 id="activity中的使用"><a href="#activity中的使用" class="headerlink" title="activity中的使用"></a>activity中的使用</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomAdaptActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">CustomAdapt</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否按照宽度进行等比例适配 (为了保证在高宽比不同的屏幕上也能正常适配, 所以只能在宽度和高度之中选择一个作为基准进行适配)</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> &#123;<span class="doctag">@code</span> true&#125; 为按照宽度进行适配, &#123;<span class="doctag">@code</span> false&#125; 为按照高度进行适配</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBaseOnWidth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设计图尺寸为 1080px * 1920px, 高换算成 dp 为 960 (1920px / 2 = 960dp)</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * 返回的设计尺寸, 单位 dp</span></span><br><span class="line"><span class="comment">     * &#123;<span class="doctag">@link</span> #getSizeInDp&#125; 须配合 &#123;<span class="doctag">@link</span> #isBaseOnWidth()&#125; 使用, 规则如下:</span></span><br><span class="line"><span class="comment">     * 如果 &#123;<span class="doctag">@link</span> #isBaseOnWidth()&#125; 返回 &#123;<span class="doctag">@code</span> true&#125;, &#123;<span class="doctag">@link</span> #getSizeInDp&#125; 则应该返回设计图的总宽度</span></span><br><span class="line"><span class="comment">     * 如果 &#123;<span class="doctag">@link</span> #isBaseOnWidth()&#125; 返回 &#123;<span class="doctag">@code</span> false&#125;, &#123;<span class="doctag">@link</span> #getSizeInDp&#125; 则应该返回设计图的总高度</span></span><br><span class="line"><span class="comment">     * 如果您不需要自定义设计图上的设计尺寸, 想继续使用在 AndroidManifest 中填写的设计图尺寸, &#123;<span class="doctag">@link</span> #getSizeInDp&#125; 则返回 &#123;<span class="doctag">@code</span> 0&#125;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 单位 dp</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getSizeInDp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">667</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="取消activity中使用"><a href="#取消activity中使用" class="headerlink" title="取消activity中使用"></a>取消activity中使用</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CancelAdaptActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">CancelAdapt</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="fragment中的使用"><a href="#fragment中的使用" class="headerlink" title="fragment中的使用"></a>fragment中的使用</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AutoSizeConfig.getInstance().setCustomFragment(<span class="keyword">true</span>);<span class="comment">//，打开fragment自定义适配</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomAdaptFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> <span class="keyword">implements</span> <span class="title">CustomAdapt</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBaseOnWidth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getSizeInDp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">667</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>取消fragmen使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CancelAdaptFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> <span class="keyword">implements</span> <span class="title">CancelAdapt</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="特定界面出现适配失效问题"><a href="#特定界面出现适配失效问题" class="headerlink" title="特定界面出现适配失效问题"></a>特定界面出现适配失效问题</h4><blockquote>
+<p>有些时候，部分界面会现在适配失效的问题，这个时候需要我们要重写 Activity 的 getResources() 方法，如果是 Dialog、PopupWindow 等控件出现适配失效或适配异常，同样在每次 show() 之前调用 AutoSize.autoConvertDensity() </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Resources <span class="title">getResources</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//需要升级到 v1.1.2 及以上版本才能使用 AutoSizeCompat</span></span><br><span class="line">    AutoSizeCompat.autoConvertDensityOfGlobal((<span class="keyword">super</span>.getResources());<span class="comment">//如果没有自定义需求用这个方法</span></span><br><span class="line">    AutoSizeCompat.autoConvertDensity((<span class="keyword">super</span>.getResources(), <span class="number">667</span>, <span class="keyword">false</span>);<span class="comment">//如果有自定义需求就用这个方法</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.getResources();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="特殊配置的初始化"><a href="#特殊配置的初始化" class="headerlink" title="特殊配置的初始化"></a>特殊配置的初始化</h4><blockquote>
+<p>另外在使用的时候会有些特殊的配置，这个时候需要单独的配置</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//当 App 中出现多进程, 并且您需要适配所有的进程, 就需要在 App 初始化时调用 initCompatMultiProcess()</span></span><br><span class="line">        <span class="comment">//在 Demo 中跳转的三方库中的 DefaultErrorActivity 就是在另外一个进程中, 所以要想适配这个 Activity 就需要调用 initCompatMultiProcess()</span></span><br><span class="line">        AutoSize.initCompatMultiProcess(<span class="keyword">this</span>);</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 以下是 AndroidAutoSize 可以自定义的参数, &#123;<span class="doctag">@link</span> AutoSizeConfig&#125; 的每个方法的注释都写的很详细</span></span><br><span class="line"><span class="comment">         * 使用前请一定记得跳进源码，查看方法的注释, 下面的注释只是简单描述!!!</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        AutoSizeConfig.getInstance()</span><br><span class="line"></span><br><span class="line">                <span class="comment">//是否让框架支持自定义 Fragment 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启</span></span><br><span class="line">                <span class="comment">//如果没有这个需求建议不开启</span></span><br><span class="line">                .setCustomFragment(<span class="keyword">true</span>)</span><br><span class="line"></span><br><span class="line">                <span class="comment">//是否屏蔽系统字体大小对 AndroidAutoSize 的影响, 如果为 true, App 内的字体的大小将不会跟随系统设置中字体大小的改变</span></span><br><span class="line">                <span class="comment">//如果为 false, 则会跟随系统设置中字体大小的改变, 默认为 false</span></span><br><span class="line"><span class="comment">//                .setExcludeFontScale(true)</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//屏幕适配监听器</span></span><br><span class="line">                .setOnAdaptListener(<span class="keyword">new</span> onAdaptListener() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAdaptBefore</span><span class="params">(Object target, Activity activity)</span> </span>&#123;</span><br><span class="line">                        <span class="comment">//使用以下代码, 可支持 Android 的分屏或缩放模式, 但前提是在分屏或缩放模式下当用户改变您 App 的窗口大小时</span></span><br><span class="line">                        <span class="comment">//系统会重绘当前的页面, 经测试在某些机型, 某些情况下系统不会重绘当前页面, ScreenUtils.getScreenSize(activity) 的参数一定要不要传 Application!!!</span></span><br><span class="line"><span class="comment">//                        AutoSizeConfig.getInstance().setScreenWidth(ScreenUtils.getScreenSize(activity)[0]);</span></span><br><span class="line"><span class="comment">//                        AutoSizeConfig.getInstance().setScreenHeight(ScreenUtils.getScreenSize(activity)[1]);</span></span><br><span class="line">                        LogUtils.d(String.format(Locale.ENGLISH, <span class="string">"%s onAdaptBefore!"</span>, target.getClass().getName()));</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAdaptAfter</span><span class="params">(Object target, Activity activity)</span> </span>&#123;</span><br><span class="line">                        LogUtils.d(String.format(Locale.ENGLISH, <span class="string">"%s onAdaptAfter!"</span>, target.getClass().getName()));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line"></span><br><span class="line">                <span class="comment">//是否打印 AutoSize 的内部日志, 默认为 true, 如果您不想 AutoSize 打印日志, 则请设置为 false</span></span><br><span class="line"><span class="comment">//                .setLog(false)</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//是否使用设备的实际尺寸做适配, 默认为 false, 如果设置为 false, 在以屏幕高度为基准进行适配时</span></span><br><span class="line">                <span class="comment">//AutoSize 会将屏幕总高度减去状态栏高度来做适配</span></span><br><span class="line">                <span class="comment">//设置为 true 则使用设备的实际屏幕高度, 不会减去状态栏高度</span></span><br><span class="line"><span class="comment">//                .setUseDeviceSize(true)</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//是否全局按照宽度进行等比例适配, 默认为 true, 如果设置为 false, AutoSize 会全局按照高度进行适配</span></span><br><span class="line"><span class="comment">//                .setBaseOnWidth(false)</span></span><br><span class="line"></span><br><span class="line">                 <span class="comment">//设置屏幕适配逻辑策略类, 一般不用设置, 使用框架默认的就好</span></span><br><span class="line"><span class="comment">//                .setAutoAdaptStrategy(new AutoAdaptStrategy())</span></span><br><span class="line">        ;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 给外部的三方库 &#123;<span class="doctag">@link</span> Activity&#125; 自定义适配参数, 因为三方库的 &#123;<span class="doctag">@link</span> Activity&#125; 并不能通过实现</span></span><br><span class="line"><span class="comment">     * &#123;<span class="doctag">@link</span> CustomAdapt&#125; 接口的方式来提供自定义适配参数 (因为远程依赖改不了源码)</span></span><br><span class="line"><span class="comment">     * 所以使用 &#123;<span class="doctag">@link</span> ExternalAdaptManager&#125; 来替代实现接口的方式, 来提供自定义适配参数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">customAdaptForExternal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;<span class="doctag">@link</span> ExternalAdaptManager&#125; 是一个管理外部三方库的适配信息和状态的管理类, 详细介绍请看 &#123;<span class="doctag">@link</span> ExternalAdaptManager&#125; 的类注释</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        AutoSizeConfig.getInstance().getExternalAdaptManager()</span><br><span class="line"></span><br><span class="line">                <span class="comment">//加入的 Activity 将会放弃屏幕适配, 一般用于三方库的 Activity, 详情请看方法注释</span></span><br><span class="line">                <span class="comment">//如果不想放弃三方库页面的适配, 请用 addExternalAdaptInfoOfActivity 方法, 建议对三方库页面进行适配, 让自己的 App 更完美一点</span></span><br><span class="line"><span class="comment">//                .addCancelAdaptOfActivity(DefaultErrorActivity.class)</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//为指定的 Activity 提供自定义适配参数, AndroidAutoSize 将会按照提供的适配参数进行适配, 详情请看方法注释</span></span><br><span class="line">                <span class="comment">//一般用于三方库的 Activity, 因为三方库的设计图尺寸可能和项目自身的设计图尺寸不一致, 所以要想完美适配三方库的页面</span></span><br><span class="line">                <span class="comment">//就需要提供三方库的设计图尺寸, 以及适配的方向 (以宽为基准还是高为基准?)</span></span><br><span class="line">                <span class="comment">//三方库页面的设计图尺寸可能无法获知, 所以如果想让三方库的适配效果达到最好, 只有靠不断的尝试</span></span><br><span class="line">                <span class="comment">//由于 AndroidAutoSize 可以让布局在所有设备上都等比例缩放, 所以只要您在一个设备上测试出了一个最完美的设计图尺寸</span></span><br><span class="line">                <span class="comment">//那这个三方库页面在其他设备上也会呈现出同样的适配效果, 等比例缩放, 所以也就完成了三方库页面的屏幕适配</span></span><br><span class="line">                <span class="comment">//即使在不改三方库源码的情况下也可以完美适配三方库的页面, 这就是 AndroidAutoSize 的优势</span></span><br><span class="line">                <span class="comment">//但前提是三方库页面的布局使用的是 dp 和 sp, 如果布局全部使用的 px, 那 AndroidAutoSize 也将无能为力</span></span><br><span class="line">                <span class="comment">//经过测试 DefaultErrorActivity 的设计图宽度在 380dp - 400dp 显示效果都是比较舒服的</span></span><br><span class="line">                .addExternalAdaptInfoOfActivity(DefaultErrorActivity<span class="class">.<span class="keyword">class</span>, <span class="title">new</span> <span class="title">ExternalAdaptInfo</span>(<span class="title">true</span>, 400))</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Andorid自动适配/" rel="tag"># Andorid自动适配</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/27/千与千寻/" rel="next" title="千与千寻">
+                <i class="fa fa-chevron-left"></i> 千与千寻
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/04/ubuntu部署及优化/" rel="prev" title="ubuntu部署及优化">
+                ubuntu部署及优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">晓远</p>
+              <p class="site-description motion-element" itemprop="description">这个一个关于博客的个人网站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介："><span class="nav-number">1.</span> <span class="nav-text">简介：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Githup地址："><span class="nav-number">2.</span> <span class="nav-text">Githup地址：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各种分辨率效果"><span class="nav-number">3.</span> <span class="nav-text">各种分辨率效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pixel-2-XL-1440-x-2880-560dpi"><span class="nav-number">3.1.</span> <span class="nav-text">Pixel 2 XL | 1440 x 2880 | 560dpi:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pixel-XL-1440-x-2560-560dpi"><span class="nav-number">3.2.</span> <span class="nav-text">Pixel XL | 1440 x 2560 | 560dpi:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nexus-5X-1080-x-1920-420dpi"><span class="nav-number">3.3.</span> <span class="nav-text">Nexus 5X | 1080 x 1920 | 420dpi:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nexus-4-768-x-1280-320dpi"><span class="nav-number">3.4.</span> <span class="nav-text">Nexus 4 | 768 x 1280 | 320dpi:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方式"><span class="nav-number">4.</span> <span class="nav-text">使用方式:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关联"><span class="nav-number">4.1.</span> <span class="nav-text">关联:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件中配置："><span class="nav-number">4.2.</span> <span class="nav-text">配置文件中配置：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题："><span class="nav-number">5.</span> <span class="nav-text">常见问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不同界面要求的切图不同"><span class="nav-number">5.1.</span> <span class="nav-text">不同界面要求的切图不同</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#activity中的使用"><span class="nav-number">5.1.1.</span> <span class="nav-text">activity中的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#取消activity中使用"><span class="nav-number">5.1.2.</span> <span class="nav-text">取消activity中使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fragment中的使用"><span class="nav-number">5.1.3.</span> <span class="nav-text">fragment中的使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特定界面出现适配失效问题"><span class="nav-number">5.2.</span> <span class="nav-text">特定界面出现适配失效问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊配置的初始化"><span class="nav-number">5.3.</span> <span class="nav-text">特殊配置的初始化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">晓远</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="卸载VMware控制面板--&amp;gt;vmware-&amp;gt;卸载。 安装VMware1.VMware-workstation-full-11.1.2-windows-x86_64.exe     以管理员身份运行. 2.自定义安装     指定安装目录(没有空格，没有中文)     ...">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不得不学的Linux命令">
+<meta property="og:url" content="https://xxyuan.net/2018/12/07/不得不学的Linux命令/index.html">
+<meta property="og:site_name" content="晓远Blog">
+<meta property="og:description" content="卸载VMware控制面板--&amp;gt;vmware-&amp;gt;卸载。 安装VMware1.VMware-workstation-full-11.1.2-windows-x86_64.exe     以管理员身份运行. 2.自定义安装     指定安装目录(没有空格，没有中文)     ...">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-16T14:20:50.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不得不学的Linux命令">
+<meta name="twitter:description" content="卸载VMware控制面板--&amp;gt;vmware-&amp;gt;卸载。 安装VMware1.VMware-workstation-full-11.1.2-windows-x86_64.exe     以管理员身份运行. 2.自定义安装     指定安装目录(没有空格，没有中文)     ...">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xxyuan.net/2018/12/07/不得不学的Linux命令/">
+
+
+
+
+
+  <title>不得不学的Linux命令 | 晓远Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a399ac754305e930ad3022a6f1429c42";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">晓远Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xxyuan.net/2018/12/07/不得不学的Linux命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="晓远">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晓远Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">不得不学的Linux命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T09:32:03+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发/" itemprop="url" rel="index">
+                    <span itemprop="name">开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="卸载VMware"><a href="#卸载VMware" class="headerlink" title="卸载VMware"></a>卸载VMware</h2><pre><code>控制面板--&gt;vmware-&gt;卸载。
+</code></pre><h2 id="安装VMware"><a href="#安装VMware" class="headerlink" title="安装VMware"></a>安装VMware</h2><pre><code>1.VMware-workstation-full-11.1.2-windows-x86_64.exe
+    以管理员身份运行.
+2.自定义安装
+    指定安装目录(没有空格，没有中文)
+    ...
+</code></pre><a id="more"></a>
+<h2 id="在vmware中安装centos客户机"><a href="#在vmware中安装centos客户机" class="headerlink" title="在vmware中安装centos客户机"></a>在vmware中安装centos客户机</h2><pre><code>1.vware文件菜单--&gt;新建虚拟机-&gt;典型安装
+2.安装程序光盘镜像文件，指定CentOS-7-DVD-1503-01-x86_64.iso
+3.个性化linux
+    全名    :centos
+    用户名    :centos
+    密码    :123456
+    确认密码:123456
+</code></pre><h2 id="centos基本命令"><a href="#centos基本命令" class="headerlink" title="centos基本命令"></a>centos基本命令</h2><pre><code>CentOS                        Windows
+$&gt;ls                        cmd&gt;dir                //
+$&gt;ls --help                                        //查看命令帮助
+$&gt;man ls                                        //查看命令帮助
+
+$&gt;clear                        cmd&gt;cls                //清屏
+$&gt;cd /home                    cmd&gt;cd d:/            //切换目录
+$&gt;cd .                        cmd&gt;cd .            //进入当前目录
+$&gt;cd ..                        cmd&gt;cd ..            //进入上级目录
+$&gt;cd /home/centos            cmd&gt;cd d:/xx/x/x    //进入绝对路径
+
+$&gt;pwd                                            //显式当前目录
+$&gt;whoami                                        //显式当前用户名
+
+$&gt;su root                                        //切换用户,输入密码
+$&gt;passwd                                        //修改当前用户的密码
+
+$&gt;ifconfig                    cmd&gt;ipconfig            //查看ip地址
+$&gt;ping localhost            cmd&gt;ping localhost        //查看网络连通情况
+$&gt;ping www.baidu.com        cmd&gt;ping www.baidu.com    //查看网络连通情况
+
+$&gt;启动桌面版的网卡
+    on.
+$&gt;su centos                                            //
+$&gt;cd /home/centos                                    //
+$&gt;cd ~                                                //回到主目录
+$&gt;cd -                                                //回到上次的目录
+$&gt;ll                                                //别名,ls -l --autocolor...
+$&gt;alias                                                //查看所有的别名
+$&gt;ls -a -l -h                                        //查看当前目录-h:人性化 -l:列表 -a:显式.开头
+$&gt;mkdir ~/Downloads/a                                //创建目录
+$&gt;touch ~/Downloads/a/1.txt                            //创建文件
+$&gt;echo helloworld &gt; 1.txt                            //重定向输出
+$&gt;cat 1.txt                                            //查看文件
+$&gt;cp 1.txt 2.txt                                    //复制文件
+$&gt;rm 1.txt                                            //删除文件
+$&gt;rm -rf tmp                                        //强行递归删除
+$&gt;mv a.txt tmp/                                        //强行递归删除
+</code></pre><h2 id="centos基本命令-1"><a href="#centos基本命令-1" class="headerlink" title="centos基本命令"></a>centos基本命令</h2><pre><code>CentOS                        Windows
+$&gt;ls                        cmd&gt;dir                //
+$&gt;ls --help                                        //查看命令帮助
+$&gt;man ls                                        //查看命令帮助
+
+$&gt;clear                        cmd&gt;cls                //清屏
+$&gt;cd /home                    cmd&gt;cd d:/            //切换目录
+$&gt;cd .                        cmd&gt;cd .            //进入当前目录
+$&gt;cd ..                        cmd&gt;cd ..            //进入上级目录
+$&gt;cd /home/centos            cmd&gt;cd d:/xx/x/x    //进入绝对路径
+
+$&gt;pwd                                            //显式当前目录
+$&gt;whoami                                        //显式当前用户名
+
+$&gt;su root                                        //切换用户,输入密码,swith user
+$&gt;passwd                                        //修改当前用户的密码
+
+$&gt;ifconfig                    cmd&gt;ipconfig            //查看ip地址
+$&gt;ping localhost            cmd&gt;ping localhost        //查看网络连通情况
+$&gt;ping www.baidu.com        cmd&gt;ping www.baidu.com    //查看网络连通情况
+
+$&gt;启动桌面版的网卡
+    on.
+$&gt;su centos                                            //
+$&gt;cd /home/centos                                    //
+$&gt;cd ~                                                //回到主目录
+$&gt;cd -                                                //回到上次的目录
+$&gt;ll                                                //别名,ls -l --autocolor...
+$&gt;alias                                                //查看所有的别名
+$&gt;ls -a -l -h                                        //查看当前目录-h:人性化 -l:列表 -a:显式.开头
+$&gt;mkdir ~/Downloads/a                                //创建目录
+$&gt;touch ~/Downloads/a/1.txt                            //创建文件
+$&gt;echo helloworld &gt; 1.txt                            //重定向输出(覆盖)
+$&gt;echo helloworld &gt;&gt; 1.txt                            //重定向输出(追加模式)
+$&gt;cat 1.txt                    cmd&gt;type a.txt            //查看文件
+$&gt;cp 1.txt 2.txt                                    //复制文件
+$&gt;rm 1.txt                                            //删除文件
+$&gt;rm -rf /                                            //强行递归删除
+$&gt;mv a.txt tmp/                                        //强行递归删除
+
+
+[centos client中切换模式]
+ctrl + alt + f6                                        //切换到文本模式
+ctrl + alt                                            //切换鼠标
+ctrl + alt + f1                                        //切换桌面模式.
+ctrl + alt + f5                                        //切换到新的文本模式
+</code></pre><p>​    </p>
+<pre><code>[nano文本编辑器,命令行模式]
+$&gt;nano a.txt                                        //打开nano编辑器，编辑a.txt文件
+$&gt;....
+$&gt;ctrl + o                                            //保存文件,提示后直接回车
+$&gt;ctrl + x                                            //退出文件
+$&gt;ctrl + k                                            //cut 文本
+$&gt;ctrl + u                                            //cut 文本
+
+$&gt;more a.txt                                        //分屏显式
+  q:退出
+  h:帮助
+$&gt;more -5 a.txt                                        //显式前5行内容
+$&gt;tail a.txt                                        //最后10行内容
+
+$&gt;find . | more                                        // | 是管道符，前面的命令的输出作为后面命令输入。
+$&gt;find ~                                            
+$&gt;ls -aR ~                                            //递归显式主目录所有的文件.(a表示包含.开头的文件)
+$&gt;head a.txt                                        //显式前10行
+$&gt;head -n 10 a.txt                                    //显式前10行
+$&gt;head -10 a.txt                                    //显式前10行
+
+$&gt;tail a.txt
+$&gt;tail -n 20 a.txt
+$&gt;tail -20 a.txt
+$&gt;tail --lines=20 a.txt
+
+$&gt;wc -c -l -w a.txt                                    //统计文本信息,
+                                                    //显式统计信息-c:字节 -l:line -w:word
+
+$&gt;hostname        //查看主机名称
+$&gt;uname -r        //查看系统内核
+$&gt;uname -a        //查看系统内核
+$&gt;uname -p        //查看系统内核
+$&gt;uname -m        //查看系统内核
+
+
+$&gt;file xxx.xx        //查看文件类型
+$&gt;gzip a.txt        //原地压缩
+$&gt;gzip -d a.txt        //原地压缩
+$&gt;gzip -dr tmp        //递归操纵文件夹下的文件
+$&gt;gunzip a.txt.gz    //等价于gzip -d a.txt
+
+$&gt;tar -cvf my.tar 1.txt tmp        //创建归档文件
+$&gt;tar -vxf my.tar                //解档文件
+
+$&gt;find . | grep txt | cp `xargs` temp    //xargs是多行变单行，使用空格替换回车换行符.
+                                        //`` : 是强制命令解析。
+$&gt;ping `cat a.txt`                        //命令嵌套
+
+$&gt;which echo                            //查看命令的文件路径
+</code></pre><h2 id="目录和权限"><a href="#目录和权限" class="headerlink" title="目录和权限"></a>目录和权限</h2><pre><code>[windows]
+以磁盘分区物理结构作为文件系统结构
+
+[Linux文件类型]
+-        //文件
+d        //目录
+l        //链接,类似于windows快捷方式.
+b        //block,块文件。
+c        //字符文件
+
+[linux的权限]
+$&gt;chmod                //修改文件(夹)权限
+$&gt;chmod    g-w            //去除group中write权.
+
+chmod                //不受文件权限控制,只有owner和root才具有文件权限的修改权。
+
+
+[read权限]
+    文件    :文件内容
+    文件夹    :文件夹的内容    
+
+
+
+write权限
+------------
+
+execute权限
+-------------
+    文件    :执行
+    文件夹    :进入目录        
+
+
+[centos]
+逻辑结构.
+/                    //文件系统的根.
+
+/bin                //最初的命令(祖先)，binary文件,可执行文件
+/sbin                //super binary(重要性高)
+
+/usr/bin            //厂商相关的命令,ubuntu
+/usr/sbin            //厂商相关的命令,ubuntu
+
+/usr/local/bin        //用户级别。
+/usr/local/sbin
+</code></pre><p>​<br>​    [客户端与宿主机之间的网络连通方式]<br>​    1.桥接<br>​        桥接(client完全等价于一台物理主机)<br>​<br>    2.NAT(最多,默认模式)<br>        a.Net Address transform,网络地址转换.<br>        b.客户机能访问外网，可以访问局域网内的其他物理主机。<br>        c.其他的局域网内物理主机不能访问客户机。</p>
+<pre><code>3.only host.
+    a.和NAT非常像。
+    b.不能访问外网。
+
+
+4.查看client机的网络连接模式
+    a.右键选择Centos客户机。
+    b.点击&quot;设置&quot;
+    c.网络适配器.
+
+5.查看DHCP的分配网段
+    a.vmware--&gt;编辑--&gt;虚拟网络编辑器
+    b.选中V8条目
+    c.下方显示的V8的详细信息。
+    d.点击DHCP的设置.
+    e.查看分配网段.
+
+
+[修改静态IP]
+1.切换root用户
+    $&gt;su root
+2.编辑/etc/sysconfig/network-scripts/ifcfg-eno16777736
+    a.备份文件
+        $&gt;cd /etc/sysconfig/network-scripts
+        $&gt;cp ifcfg-eno16777736 ifcfg-eno16777736.bak
+    b.进入/etc/sysconfig/network-scripts
+        $&gt;cd /etc/sysconfig/network-scripts
+    c.编辑ifcfg-eno16777736文件
+        $&gt;nano ifcfg-eno16777736
+            TYPE=Ethernet                    
+            BOOTPROTO=none                    
+            DEFROUTE=yes                    
+            IPV4_FAILURE_FATAL=no            
+            IPV6INIT=no
+            IPV6_AUTOCONF=no
+            IPV6_DEFROUTE=no
+            IPV6_PEERDNS=no
+            IPV6_PEERROUTES=no
+            IPV6_FAILURE_FATAL=no
+            NAME=eno16777736
+            UUID=33f3ce5f-8b5c-41af-90ed-863736e09c29
+            DEVICE=eno16777736
+            ONBOOT=yes
+            IPADDR=192.168.231.200
+            PREFIX=24
+            GATEWAY=192.168.231.2
+            DNS=192.168.231.2
+
+        注意:查看NAT网络的网关地址。
+            0)Client机的网卡的DNS和GATEWAY设置为虚拟网卡NAT的网关值。
+            1)vmware--&gt;编辑--&gt;虚拟网路编辑器
+            2)v8条目
+            3)点击&quot;NAT设置&quot;按钮
+            4)查看网关地址:192.168.231.2(通常为xxx.xxx.xxx.2)
+    e.重启网络服务
+        $&gt;su root
+        $&gt;service network restart
+
+    f.****解决通过ip能够访问网络，通过域名无法访问的问题。*****
+        1)编辑/etc/resolv.conf,添加名称服务器，内容是网关地址。
+            nameserver 192.168.231.2
+        2)保存退出
+
+        3)重启服务
+            $&gt;su root
+            $&gt;service network restart
+        4)测试www.baidu.com
+            $&gt;ping www.baidu.com
+</code></pre><h2 id="service管理命令"><a href="#service管理命令" class="headerlink" title="service管理命令"></a>service管理命令</h2><pre><code>1.查看服务的状态
+    $&gt;service server_name status        //语法
+    $&gt;service network status
+    $&gt;service network start                //启动
+    $&gt;service network stop                //停止
+    $&gt;service network restart            //重启
+</code></pre><h2 id="mount挂载外设"><a href="#mount挂载外设" class="headerlink" title="mount挂载外设"></a>mount挂载外设</h2><pre><code>1.右键client右下角的光盘图标 -&gt;设置
+2.iso文件
+    选择一个iso镜像文件。
+3.右键client右下角的光盘图标 -&gt;连接.
+4.创建文件夹/mnt/cdrom
+    $&gt;su root
+    $&gt;mkdir cdrom
+5.挂载光驱/dev/cdrom到/mnt/cdrom
+    $&gt;mount /dev/cdrom /mnt/cdrom
+    $&gt;find . /mnt/cdrom                
+</code></pre><h2 id="卸载外设"><a href="#卸载外设" class="headerlink" title="卸载外设"></a>卸载外设</h2><pre><code>1.从挂载的目录中出来,否则出现设备繁忙
+    $&gt;cd ..
+2.使用umount进行卸载
+    $&gt;umount /mnt/cdrom
+</code></pre><h2 id="启用client和host之间共享目录的功能"><a href="#启用client和host之间共享目录的功能" class="headerlink" title="启用client和host之间共享目录的功能"></a>启用client和host之间共享目录的功能</h2><pre><code>1.右键点击vmware中的client机，选择设置
+2.找到&quot;选项&quot; -&gt; &quot;共享文件夹&quot; 
+3.选择&quot;总是启用&quot;
+4.在文件夹区域中添加要共享的目录
+    d:/downloads
+5.确定.
+6.重启客户机.
+</code></pre><h2 id="vmware-Vnet8虚拟网卡丢失的找回问题"><a href="#vmware-Vnet8虚拟网卡丢失的找回问题" class="headerlink" title="vmware Vnet8虚拟网卡丢失的找回问题"></a>vmware Vnet8虚拟网卡丢失的找回问题</h2><pre><code>1.打开VMware Workstation 
+2.然后点击Edit --&gt; Virtual Network Edit --&gt; 打开Virtual Network Edit框 ，
+3.点击最下面的的Restore Default 按钮，
+3.恢复默认设置，这会在网络连接那块可以看到丢失的VMware Network Adapter VMnet8 又回来啦，
+  或者 在Virtual Network Edit框 找到一个Add Network... 的按钮 弹出来一个框 然后在select a network to add 中选择VMnet8 
+  单击OK 就可以啦
+</code></pre><h2 id="虚拟机增强工具"><a href="#虚拟机增强工具" class="headerlink" title="虚拟机增强工具"></a>虚拟机增强工具</h2><pre><code>1.原理
+    插入iso(C:\myprograms\vmwar11.0.4-x86_64\linux.iso)文件到光盘中。
+
+2.vmware虚拟机菜单 -&gt; 重新安装vmware-tools
+3.自动会将C:\myprograms\vmwar11.0.4-x86_64\linux.iso镜像文件插入光驱中，并直接打开。
+4.复制VMwareTools-9.9.3-2759765.tar.gz文件到centos的桌面下。
+5.tar开该文件.
+    鼠标右键点击桌面的tar.gz文件，选择 extract here.
+6.进入桌面的vmware-tools-distrib目录下.
+    $&gt;su root
+    $&gt;cd /home/centos/Desktop/vmware-tools-distrib
+7.执行安装脚本
+    $&gt;./vmware-install.pl
+        一路回车。
+        只到遇到Enjoy!!...
+</code></pre><p>​    </p>
+<h2 id="Putty-发音-party"><a href="#Putty-发音-party" class="headerlink" title="[Putty(发音:party)]"></a>[Putty(发音:party)]</h2><pre><code>1.运行putty.exe
+2.输入ip地址
+3.点击open.
+</code></pre><h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><pre><code>r        //100 = 4
+        //文件  :读取内容，
+        //文件夹:是查看文件夹的内容
+w        //文件  :写数据到文件
+        //文件夹:增删文件.
+        //10 = 2
+
+x        //文件  : 运行程序
+        //文件夹: 进入该目录.
+        // 1 = 1
+</code></pre><h2 id="权限控制涉及范围"><a href="#权限控制涉及范围" class="headerlink" title="权限控制涉及范围"></a>权限控制涉及范围</h2><pre><code>U:user    ,rwx r-x ---
+G:group ,
+O:other , 
+</code></pre><h2 id="修改文件的owner-change-owner"><a href="#修改文件的owner-change-owner" class="headerlink" title="修改文件的owner,change owner"></a>修改文件的owner,change owner</h2><pre><code>chown -R root:root a.txt        //递归修改owner
+chmod -R 777 xxx                //递归修改权限.
+</code></pre><h2 id="Linux文件夹"><a href="#Linux文件夹" class="headerlink" title="Linux文件夹"></a>Linux文件夹</h2><pre><code>/                //根目录
+
+/bin            //祖先
+/sbin            //祖先
+/usr/bin        //厂商
+/usr/sbin        //厂商
+/usr/local/bin    //用户
+/usr/local/sbin    //用户
+
+/etc            //配置目录
+/mnt            //挂载目录
+/boot            //引导目录
+/dev            //设备目录
+/lib[64]        //库目录
+</code></pre><p>-:文件<br>d:目录<br>l:link<br>b:block,块设备<br>c:charactor,字符文件</p>
+<h2 id="创建连接文件"><a href="#创建连接文件" class="headerlink" title="创建连接文件"></a>创建连接文件</h2><pre><code>1.硬链接
+    两个完全相同文件，类似于实时备份。两个文件之间完全同步。
+    删除时，只删一个。
+    目录不能使用硬链接。
+    ln a.txt alink            //a.txt:目标文件, alink:连接名称.
+
+2.符号连接
+    相当于快捷方式.
+    可以对文件，也可以对文件夹创建符号连接。
+    符号连接存在的时候，可以删除目标文件。
+    $&gt;ln -s a.txt alink        //a.txt: 目标文件  alink:连接名称(symbolic)
+</code></pre><h2 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h2><pre><code>临时借用root的权限执行命令,只在当前命令下有效。命令结束后，还是原来用户。
+1.配置当前用户具有sudo的执行权利
+    [/etc/sudoers]
+    ...
+    root ALL=(ALL) ALL
+    centos ALL=(ALL) ALL
+    ...
+$&gt;sudo chown -R centos:centos .
+</code></pre><h2 id="job"><a href="#job" class="headerlink" title="job"></a>job</h2><pre><code>放到后台运行的进程.
+1.将程序放到后台运行,以&amp;结尾.
+    $&gt;nano b.txt &amp;
+
+2.查看后台运行的jobs数
+    $&gt;jobs
+
+3.切换后台作业到前台来.
+    $&gt;fg %n                //n是job编号.
+
+4.前台正在的进程，放到后台。
+    ctrl + z
+
+5.让后作业运行
+    $&gt;bg %1        //
+
+6.杀死作业
+    $&gt;kill %1    //
+</code></pre><h2 id="进程查看-prcess-show"><a href="#进程查看-prcess-show" class="headerlink" title="进程查看,prcess show"></a>进程查看,prcess show</h2><pre><code>$&gt;ps -Af |grep gnome        //-A:所有进程  -f:所有列格式.
+
+$&gt;top                        //动态显示进程信息。含有cpu、内存的使用情况.
+                            //q,按照q退出。
+</code></pre><h2 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h2><pre><code>剪切显示文件的每一行。
+$&gt;cut -c 1-5 a.txt                    //从第一个字符开始,下标从1开始。
+$&gt;ps -Af | cut -c 45-80 | more        //
+</code></pre><h2 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h2><pre><code>$&gt;help            //查看os内置的命令
+$&gt;man ifconfig    //查看特定命令
+$&gt;ifconfig --help
+$&gt;ifconfig -h
+$&gt;info ifconfig    //
+</code></pre><h2 id="磁盘分区使用"><a href="#磁盘分区使用" class="headerlink" title="磁盘分区使用"></a>磁盘分区使用</h2><pre><code>$&gt;fdisk -l /dev/sda
+</code></pre><h2 id="查看磁盘使用情况-disk-free"><a href="#查看磁盘使用情况-disk-free" class="headerlink" title="查看磁盘使用情况(disk free)"></a>查看磁盘使用情况(disk free)</h2><pre><code>$&gt;df -ah /home/centos        //查看
+</code></pre><h2 id="dirname"><a href="#dirname" class="headerlink" title="dirname"></a>dirname</h2><pre><code>取出指定地址的上级目录.
+$&gt;dirname /a/b/c/d
+$&gt;/a/b/c
+</code></pre><h2 id="basename"><a href="#basename" class="headerlink" title="basename"></a>basename</h2><pre><code>取出当前地址的上级目录.
+$&gt;dirname /a/b/c/d
+$&gt;d
+</code></pre><h2 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h2><pre><code>$&gt;hostname        //显式主机名
+
+$&gt;修改主机名(sudo)
+    [/etc/hostname]
+    s200
+</code></pre><h2 id="配置主机名和ip地址的映射"><a href="#配置主机名和ip地址的映射" class="headerlink" title="配置主机名和ip地址的映射"></a>配置主机名和ip地址的映射</h2><pre><code>[/etc/hosts]
+127.0.0.1 localhost
+192.168.231.200 s200
+</code></pre><h2 id="关机重启命令"><a href="#关机重启命令" class="headerlink" title="关机重启命令"></a>关机重启命令</h2><pre><code>$&gt;reboot        //重启
+$&gt;halt            //停止,黑屏
+                //halt -p  === poweroff
+                //halt -r  === reboot
+
+$&gt;poweroff        //关机
+$&gt;shutdown        //shutdown now,
+</code></pre><h2 id="命令嵌套"><a href="#命令嵌套" class="headerlink" title="命令嵌套"></a>命令嵌套</h2><pre><code>1.使用``
+    $&gt;echo `cat b.txt`    //命令解析,无法嵌套
+    $&gt;$(... $())        //支持命令的嵌套
+2.
+</code></pre><h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><pre><code>0.用户和组之间，一个用户可以属于多个组。
+  但是有一个首要组。
+
+1.adduser,等同于useradd
+    符号链接。
+    /usr/sbin/adduser --&gt; /usr/sbin/useradd.
+
+2.useradd
+    $&gt;su root
+    $&gt;useradd -m centos2
+        输入新密码.
+        重复输入。
+
+3.使用方法
+    $&gt;su root
+    $&gt;userdel -r centos2
+</code></pre><h2 id="访问文件-夹-物理位置"><a href="#访问文件-夹-物理位置" class="headerlink" title="访问文件(夹)物理位置"></a>访问文件(夹)物理位置</h2><pre><code>$&gt;cd -P /t            //进入/t的物理位置
+$&gt;pwd -P            //显式当前目录的物理位置
+</code></pre><h2 id="访问环境变量"><a href="#访问环境变量" class="headerlink" title="访问环境变量"></a>访问环境变量</h2><pre><code>echo ${PATH}                //ok
+echo $PATH                    //ok
+echo &quot;$PATH&quot;                //ok
+echo &apos;$PATH&apos;                //&apos;&apos;原样输出
+</code></pre><h2 id="export定义环境变量-只在session中有效"><a href="#export定义环境变量-只在session中有效" class="headerlink" title="export定义环境变量,只在session中有效"></a>export定义环境变量,只在session中有效</h2><pre><code>$&gt;export name=${PATH}:tom
+$&gt;export name=${Var1:-${Var2}}    //设置name为${Var1}的值，Var1没有设置为${Var2}的值。
+</code></pre><h2 id="命令执行过程"><a href="#命令执行过程" class="headerlink" title="命令执行过程"></a>命令执行过程</h2><pre><code>$?        //命令的返回值存储变量,0:成功 1:失败。
+$#        //参数个数
+$1        //第几个参数
+$0        //当前脚本(命令)名称
+$@        //取出所有参数
+shift    //参数左移
+${a/b/c}    //
+</code></pre><h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><pre><code>语法:
+if COMMANDS; then COMMANDS; [ elif COMMANDS; then COMMANDS; ]... [ else COMMANDS; ] fi
+
+if [ $# -lt 3 ]; then xx ; fi
+
+3,5
+</code></pre><h2 id="使用for循环输出1-100个数"><a href="#使用for循环输出1-100个数" class="headerlink" title="使用for循环输出1 - 100个数"></a>使用for循环输出1 - 100个数</h2><pre><code>for NAME [in WORDS ... ] ; do COMMANDS; done
+for x in a b c d ; do echo $x ; done ;
+</code></pre><h2 id="命令组合"><a href="#命令组合" class="headerlink" title="命令组合"></a>命令组合</h2><pre><code>a &amp;&amp; b ;        //a成功后执行b，
+a || b ;        //a失败后之后b；
+a ; b            //无逻辑关系,改变目录
+(a ; b)            //无逻辑关系,不改变目录
+</code></pre><h2 id="netcat"><a href="#netcat" class="headerlink" title="netcat"></a>netcat</h2><pre><code>瑞士军刀。
+[server]
+nc -lk 8888        //-l : 监听
+                //-k : 接受多个连接
+
+
+[client]
+nc ip 8888 ;    //客户端指定服务器端
+</code></pre><h2 id="windows下nc"><a href="#windows下nc" class="headerlink" title="windows下nc"></a>windows下nc</h2><pre><code>1.配置环境变量path
+2.常用命令
+    cmd&gt;nc -h                            //看帮助
+
+3.启动服务器端
+    cmd&gt;nc -l -p 8888 -s 0.0.0.0        //通配ip
+</code></pre><h2 id="通过nc实现文件传输"><a href="#通过nc实现文件传输" class="headerlink" title="通过nc实现文件传输"></a>通过nc实现文件传输</h2><pre><code>0.使用重定向(输入|输出)。
+1.server(centos)
+    nc -l 8888 &gt; a.txt ;
+</code></pre><h2 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h2><pre><code>netstat -anop    //显式网络情况
+                //-a : 所有socket
+                //-n : 显式数字地址
+                //-p : pid
+                //-o : timer
+</code></pre><h2 id="YUM"><a href="#YUM" class="headerlink" title="YUM"></a>YUM</h2><pre><code>Yellow dog updater manager.
+</code></pre><h2 id="安装min版的centos"><a href="#安装min版的centos" class="headerlink" title="安装min版的centos"></a>安装min版的centos</h2><pre><code>1.在vmware中新建虚拟机
+2.插入iso镜像文件:CentOS-7-x86_64-Minimal-1511.iso
+3.
+4.
+5.
+</code></pre><h2 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h2><pre><code>apt        //advanced package tool,高级包工具。
+apt-get install
+</code></pre><h2 id="centos"><a href="#centos" class="headerlink" title="centos"></a>centos</h2><pre><code>yum        //yellowdog updater modified.
+</code></pre><p>​    </p>
+<h2 id="软件源"><a href="#软件源" class="headerlink" title="软件源"></a>软件源</h2><pre><code>Repository        //仓库.
+URL                //http:// 
+
+.d                //directory目录
+xxxd            //daemon
+</code></pre><h2 id="查看仓库文件"><a href="#查看仓库文件" class="headerlink" title="查看仓库文件"></a>查看仓库文件</h2><pre><code>/etc/yum.repos.d/xxx.repo
+</code></pre><h2 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h2><pre><code>传输url上的数据的。
+[下载文件到指定目录]
+curl -o /etc/yum.repos.d/ali.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+</code></pre><h2 id="更换centos的软件源"><a href="#更换centos的软件源" class="headerlink" title="更换centos的软件源"></a>更换centos的软件源</h2><pre><code>1.下载源仓库文件,xxx.repo
+    curl -o /etc/yum.repos.d/ali.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+2.将repo文件保存到/etc/yum.repos.d/目录中。
+</code></pre><h2 id="屏蔽软件仓库"><a href="#屏蔽软件仓库" class="headerlink" title="屏蔽软件仓库"></a>屏蔽软件仓库</h2><pre><code>1.将/etc/yum.repos.d/xxx.repo文件删除或者更换扩展名即可。
+</code></pre><h2 id="修改centos能够使用sudo命令"><a href="#修改centos能够使用sudo命令" class="headerlink" title="修改centos能够使用sudo命令"></a>修改centos能够使用sudo命令</h2><pre><code>[/etc/sudoers]
+$&gt;su root
+$&gt;nano /etc/sudoers
+    ...
+    centos ALL
+</code></pre><h2 id="使用yum进行软件包安装卸载"><a href="#使用yum进行软件包安装卸载" class="headerlink" title="使用yum进行软件包安装卸载"></a>使用yum进行软件包安装卸载</h2><pre><code>$&gt;yum list                            //列出所有软件包
+$&gt;yum list installed                //列出已经安装的软件包
+$&gt;yum list installed | grep nano    //列出已经安装的软件包
+$&gt;yum search nano                    //在yum的软件源中搜索软件 
+$&gt;yum remove nano                    //卸载软件
+$&gt;yum -y install nano                //直接安装，不需要yes确认.
+$&gt;yum list installed | grep nano    //查看是否安装了Nano
+
+$&gt;mkdir /home/centos/rpms
+
+$echo 以下命令只下载软件，不安装软件
+$&gt;sudo yum install --downloadonly                //只下载
+              --downloaddir=/home/centos/rpms    //指定下载目录
+              wget
+
+//下载已经安装的软件
+$&gt;sudo yum reinstall --downloadonly    
+                     --downloaddir=/home/centos/rpms
+                     wget
+
+$&gt;sudo yum localinstall xxx.rpm    //从本地rpm文件直接安装软件
+</code></pre><p>​<br>​    $&gt;su root<br>​    $&gt;yum search ifconfig<br>​    $&gt;yum -y install net-tools        //安装网络工具</p>
+<p>​<br>​    #==========修改网络地址======================    //需要重启network服务<br>​    $&gt;sudo nano /etc/sysconfig/network-scripts/ifcfg-eth1677736<br>​        [/etc/sysconfig/network-scripts/ifcfg-eth1677736]<br>​        …<br>​        IPADDR=192.168.231.201<br>​        GATEWAY=192.168.231.2<br>​        DNS=192.168.231.2<br>​<br>    $&gt;service network restart                        //重启网络服务。</p>
+<pre><code>$&gt;sudo nano /etc/resolv.conf                    //修改该文件不需要重启network服务
+    [/etc/resolv.conf]
+    nameserver 192.168.231.2
+</code></pre><h2 id="在没有nano时，使用自带的vi文本编辑器"><a href="#在没有nano时，使用自带的vi文本编辑器" class="headerlink" title="在没有nano时，使用自带的vi文本编辑器"></a>在没有nano时，使用自带的vi文本编辑器</h2><pre><code>1.vi xx.txt
+2.模式切换
+    esc                //切换到命令模式,退出编辑模式
+                    //:q!  不保存退出
+                    //:wq  保存退出
+                    //x        删除一个字符
+                    //dd    删除一行
+
+    insert            //切换到编辑模式,退出命令模式
+                    //del backspace
+</code></pre><h2 id="制作iso镜像文件"><a href="#制作iso镜像文件" class="headerlink" title="制作iso镜像文件"></a>制作iso镜像文件</h2><pre><code>0.清除yum的缓存文件
+    $.sudo yum clean cache
+
+1.重新制作yum的缓存(需要几分钟时间)
+    $&gt;sudo yum makecache
+
+2.搜索mkisofs软件包
+    $&gt;sudo yum search mkisofs
+
+3.安装mkisofs软件包
+    $&gt;sudo yum install mkisofs
+
+4.查看是否安装成功
+    a)which
+        $&gt;which mkisofs
+
+    b)通过yum list
+        $&gt;sudo yum list installed | grep geniso                    //geniso是软件包名
+
+5.制作iso文件
+    $&gt;sudo mkisofs -r 
+                   -o CentOS-7-Packages.iso /home/centos/rpms    //-r : 保留原文件,-o:输出的iso文件名
+
+6.挂载iso文件到client的光驱中。
+    点击右下角的光驱图标。
+
+7.挂载cdrom中的文件到/mnt/cdrom下.
+    $&gt;mount /dev/cdrom /mnt/cdrom
+
+8.复制/mnt/cdrom/*到/home/centos/rpms目录下
+    $&gt;su centos
+    $&gt;mkdir ~/rpms
+    $&gt;cp /mnt/cdrom/* /home/centos/rpms
+
+9.挂载vmware安装目录下的linux.iso(虚拟机增强工具镜像文件)文件
+    a)卸载/mnt/cdrom目录
+        $&gt;sudo umount /mnt/cdrom
+    b)插入linux.iso镜像文件到光驱.
+    c)连接设备
+    d)挂载/dev/cdrom到/mnt/cdrom
+        $&gt;mount /dev/cdrom /mnt/cdrom
+
+    e)复制/mnt/cdrom/*到/home/centos/linux/目录下
+        $&gt;su centos ; mkdir ~/linux
+        $&gt;cp /mnt/cdrom/* /home/centos/linux
+</code></pre><h2 id="安装虚拟机增强工具"><a href="#安装虚拟机增强工具" class="headerlink" title="安装虚拟机增强工具"></a>安装虚拟机增强工具</h2><pre><code>1.挂载并复制linux.iso镜像文件文件到/home/centos/linux中
+2.tar开VM-xx-xxx.tar.gz
+    $&gt;su centos ; cd ~/linux
+    $&gt;tar -xzvf VMxxx.tar.gz
+    $&gt;cd vmware-tools-distrib
+    $&gt;su root ; 
+    #====可能重复以下过程====
+    $&gt;./vmware-install.pl
+    $&gt;出现perl没有解释器的错误.
+        解决办法:
+        $&gt;cd /home/centos/rpms
+        $&gt;sudo yum localinstall perl-5.16.3-286.e17.x86_64.rpm
+
+    $&gt;./vmware-install.pl
+    $&gt;出现gcc path找不到
+        解决办法:
+        $&gt;cd /home/centos/rpms
+        $&gt;sudo yum localinstall gcc-xxx.rpm
+
+    $&gt;./vmware-install.pl
+    $&gt;出现kenel-headers path找不到
+        解决办法:
+        $&gt;cd /home/centos/rpms
+        $&gt;sudo yum localinstall kernel-devel-xxx.rpm
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/06/生活无处不在的正能量/" rel="next" title="生活无处不在的正能量">
+                <i class="fa fa-chevron-left"></i> 生活无处不在的正能量
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/10/心学FAQ/" rel="prev" title="心学FAQ">
+                心学FAQ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">晓远</p>
+              <p class="site-description motion-element" itemprop="description">这个一个关于博客的个人网站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载VMware"><span class="nav-number">1.</span> <span class="nav-text">卸载VMware</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装VMware"><span class="nav-number">2.</span> <span class="nav-text">安装VMware</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在vmware中安装centos客户机"><span class="nav-number">3.</span> <span class="nav-text">在vmware中安装centos客户机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#centos基本命令"><span class="nav-number">4.</span> <span class="nav-text">centos基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#centos基本命令-1"><span class="nav-number">5.</span> <span class="nav-text">centos基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录和权限"><span class="nav-number">6.</span> <span class="nav-text">目录和权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service管理命令"><span class="nav-number">7.</span> <span class="nav-text">service管理命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mount挂载外设"><span class="nav-number">8.</span> <span class="nav-text">mount挂载外设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载外设"><span class="nav-number">9.</span> <span class="nav-text">卸载外设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启用client和host之间共享目录的功能"><span class="nav-number">10.</span> <span class="nav-text">启用client和host之间共享目录的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vmware-Vnet8虚拟网卡丢失的找回问题"><span class="nav-number">11.</span> <span class="nav-text">vmware Vnet8虚拟网卡丢失的找回问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机增强工具"><span class="nav-number">12.</span> <span class="nav-text">虚拟机增强工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Putty-发音-party"><span class="nav-number">13.</span> <span class="nav-text">[Putty(发音:party)]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限"><span class="nav-number">14.</span> <span class="nav-text">权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限控制涉及范围"><span class="nav-number">15.</span> <span class="nav-text">权限控制涉及范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文件的owner-change-owner"><span class="nav-number">16.</span> <span class="nav-text">修改文件的owner,change owner</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux文件夹"><span class="nav-number">17.</span> <span class="nav-text">Linux文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建连接文件"><span class="nav-number">18.</span> <span class="nav-text">创建连接文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sudo"><span class="nav-number">19.</span> <span class="nav-text">sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#job"><span class="nav-number">20.</span> <span class="nav-text">job</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程查看-prcess-show"><span class="nav-number">21.</span> <span class="nav-text">进程查看,prcess show</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cut"><span class="nav-number">22.</span> <span class="nav-text">cut</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看帮助"><span class="nav-number">23.</span> <span class="nav-text">查看帮助</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘分区使用"><span class="nav-number">24.</span> <span class="nav-text">磁盘分区使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看磁盘使用情况-disk-free"><span class="nav-number">25.</span> <span class="nav-text">查看磁盘使用情况(disk free)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dirname"><span class="nav-number">26.</span> <span class="nav-text">dirname</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basename"><span class="nav-number">27.</span> <span class="nav-text">basename</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主机名"><span class="nav-number">28.</span> <span class="nav-text">主机名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置主机名和ip地址的映射"><span class="nav-number">29.</span> <span class="nav-text">配置主机名和ip地址的映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关机重启命令"><span class="nav-number">30.</span> <span class="nav-text">关机重启命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令嵌套"><span class="nav-number">31.</span> <span class="nav-text">命令嵌套</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建用户"><span class="nav-number">32.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问文件-夹-物理位置"><span class="nav-number">33.</span> <span class="nav-text">访问文件(夹)物理位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问环境变量"><span class="nav-number">34.</span> <span class="nav-text">访问环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#export定义环境变量-只在session中有效"><span class="nav-number">35.</span> <span class="nav-text">export定义环境变量,只在session中有效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令执行过程"><span class="nav-number">36.</span> <span class="nav-text">命令执行过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if"><span class="nav-number">37.</span> <span class="nav-text">if</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用for循环输出1-100个数"><span class="nav-number">38.</span> <span class="nav-text">使用for循环输出1 - 100个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令组合"><span class="nav-number">39.</span> <span class="nav-text">命令组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#netcat"><span class="nav-number">40.</span> <span class="nav-text">netcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows下nc"><span class="nav-number">41.</span> <span class="nav-text">windows下nc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过nc实现文件传输"><span class="nav-number">42.</span> <span class="nav-text">通过nc实现文件传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看端口"><span class="nav-number">43.</span> <span class="nav-text">查看端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YUM"><span class="nav-number">44.</span> <span class="nav-text">YUM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装min版的centos"><span class="nav-number">45.</span> <span class="nav-text">安装min版的centos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu"><span class="nav-number">46.</span> <span class="nav-text">ubuntu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#centos"><span class="nav-number">47.</span> <span class="nav-text">centos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件源"><span class="nav-number">48.</span> <span class="nav-text">软件源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看仓库文件"><span class="nav-number">49.</span> <span class="nav-text">查看仓库文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#curl"><span class="nav-number">50.</span> <span class="nav-text">curl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换centos的软件源"><span class="nav-number">51.</span> <span class="nav-text">更换centos的软件源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#屏蔽软件仓库"><span class="nav-number">52.</span> <span class="nav-text">屏蔽软件仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改centos能够使用sudo命令"><span class="nav-number">53.</span> <span class="nav-text">修改centos能够使用sudo命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用yum进行软件包安装卸载"><span class="nav-number">54.</span> <span class="nav-text">使用yum进行软件包安装卸载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在没有nano时，使用自带的vi文本编辑器"><span class="nav-number">55.</span> <span class="nav-text">在没有nano时，使用自带的vi文本编辑器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作iso镜像文件"><span class="nav-number">56.</span> <span class="nav-text">制作iso镜像文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装虚拟机增强工具"><span class="nav-number">57.</span> <span class="nav-text">安装虚拟机增强工具</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">晓远</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
